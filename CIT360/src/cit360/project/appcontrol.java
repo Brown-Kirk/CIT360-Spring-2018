@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cit360.JsonHttpUrlConnection;
+package cit360.project;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +16,11 @@ import java.util.Locale;
  */
 public class appcontrol {
     
+    public static void main(String[] args) throws Exception {
+        
+        Controller.getJSON("https://launchlibrary.net/1.4/launch/next/1");
+
+    }
     public static String getDate( String net ) throws Exception {
         SimpleDateFormat inputFormat = new SimpleDateFormat("MMMM d, yyyy HH:mm:ss z", Locale.ENGLISH);
         Date inputDate = inputFormat.parse(net);
