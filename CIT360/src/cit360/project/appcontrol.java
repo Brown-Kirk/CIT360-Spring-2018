@@ -12,8 +12,9 @@ import java.util.Locale;
 
 /**
  *
- * @author reddo
+ * @author Kirk Brown
  */
+
 public class appcontrol {
     
     public static void main(String[] args) throws Exception {

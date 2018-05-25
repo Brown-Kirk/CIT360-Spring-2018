@@ -13,8 +13,9 @@ import java.net.URL;
 
 /**
  *
- * @author reddo
+ * @author Kirk Brown
  */
+
 public class Controller {
     
     public static void jsonParse(String completedJson) throws Exception {

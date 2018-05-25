@@ -9,9 +9,8 @@ import java.util.List;
 
 /**
  *
- * @author reddo
+ * @author Kirk Brown
  */
-
 
 public class Launch {
     private List<launches> launches;
