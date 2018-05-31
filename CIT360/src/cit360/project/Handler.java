@@ -13,8 +13,8 @@ import java.util.HashMap;
  */
 public class Handler {
 
-    void handleIt(HashMap<String, Object> data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void handleIt(String data) {
+        OutputView.outputDetail(data);
     }
     
 }

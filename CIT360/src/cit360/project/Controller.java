@@ -13,6 +13,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import cit360.project.JSON;
 
 
 /**
@@ -22,7 +23,7 @@ import java.util.Locale;
 
 public class Controller {
     
-    public static void jsonParse(String completedJson) throws Exception {
+    public void jsonParse(String completedJson) throws Exception {
 
         // Create a new Gson object to convert our JSON string
         Gson gson = new Gson();
@@ -40,15 +41,16 @@ public class Controller {
         String missionDescription = launchDetail.getmissions().get(0).getdescription();
         
         // Output the info we want to give to our user
-        OutputView.outputDetail(" Launch details for the next space launch worldwide: ");
-        OutputView.outputDetail(" Launch Date: ", launchDate);
-        OutputView.outputDetail(" Launch Name: ", launchName);
-        OutputView.outputDetail(" Mission: ", missionDescription);
-        OutputView.outputBlankLine();
-
+        JSON json = new JSON();
+        json.init();
+        json.jsonOutput(" Launch details for the next space launch worldwide: ");
+        json.jsonOutput(" Launch Date: " + launchDate);
+        json.jsonOutput(" Launch Name: " + launchName);
+        json.jsonOutput(" Mission: " + missionDescription);
+        
     }
     
-    public static void getJSON( String sourceURL ) throws Exception {
+    public void getJSON( String sourceURL ) throws Exception {
         try {
             // Define the location from which we will get our JSON file
             URL url = new URL(sourceURL);
@@ -71,7 +73,9 @@ public class Controller {
                 // Convert the buffer to into a string variable - this is our completed JSON file
                 String completedJson = jsonBuffer.toString();
                 //Take our JSON string and run it through the jsonParse function
-                OutputView.outputDetail(" Raw JSON Data: ", completedJson);
+                JSON json = new JSON();
+                json.init();
+                json.jsonOutput(" Raw JSON Data: " + completedJson);
                 jsonParse(completedJson);
             } catch (Exception e) {
                 // If there are any exception, show the stack trace

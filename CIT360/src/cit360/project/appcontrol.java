@@ -17,10 +17,12 @@ public class appcontrol {
     
     private HashMap<String,Handler> handlerMap = new HashMap();
 
-    public void handleRequest(String command, HashMap<String,Object> data){
+    public void handleRequest(String command, String data){
         Handler aCommandHandler = handlerMap.get(command);
         if (aCommandHandler != null){
             aCommandHandler.handleIt(data);
+        } else {
+            OutputView.outputDetail("Oopsy");
         }
     }
 

@@ -10,12 +10,17 @@ public class JSON {
     private appcontrol appcontroller = new appcontrol();
     
     public void init(){
-        appcontroller.mapCommand("JSONCommand", new Handler());
+        appcontroller.mapCommand("JSONOutput", new Handler());
+    }
+    
+    public void jsonOutput(String output){
+        appcontroller.handleRequest("JSONOutput", output);
     }
     
     public static void main(String[] args) throws Exception {
         
-        Controller.getJSON("https://launchlibrary.net/1.4/launch/next/1");
+        Controller controller = new Controller();
+        controller.getJSON("https://launchlibrary.net/1.4/launch/next/1");
 
     }
 }
