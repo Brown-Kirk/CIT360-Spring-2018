@@ -10,6 +10,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 /**
  *
@@ -31,7 +35,7 @@ public class Controller {
         // From the details, get just the date of the launch
         // If you check the Launch class, you'll see this does some parsing to take it from UTC to local time
         String launchDate = launchDetail.getnet();
-        String launchDateFormatted = appcontrol.getDate(launchDate);
+        String launchDateFormatted = getDate(launchDate);
         // Go a couple layers deeper and get the description of the first mission
         String missionDescription = launchDetail.getmissions().get(0).getdescription();
         
@@ -83,5 +87,12 @@ public class Controller {
             ex.printStackTrace();
         }
 
+    }
+    public static String getDate( String net ) throws Exception {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MMMM d, yyyy HH:mm:ss z", Locale.ENGLISH);
+        Date inputDate = inputFormat.parse(net);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM d, yyyy h:m:s a z");
+        String outputDate = outputFormat.format(inputDate);
+        return outputDate;
     }
 }

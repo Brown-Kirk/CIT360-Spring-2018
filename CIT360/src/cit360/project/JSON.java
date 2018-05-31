@@ -4,22 +4,19 @@
  * and open the template in the editor.
  */
 package cit360.project;
-    import com.google.gson.*;
-    import java.util.HashMap;
-    import java.util.Map;
+import cit360.project.appcontrol;
+
 public class JSON {
-    public static void main(String[] args){
-        Gson jsonGson = new Gson();
-        Map<String, String> jsonHashmap = new HashMap<>();
-        jsonHashmap.put("Rilie", "21");
-        jsonHashmap.put("Sarah", "20");
-        jsonHashmap.put("Zachary", "19");
-        String jsonStr = jsonGson.toJson(jsonHashmap);
-        System.out.println("HashMap output: " + jsonHashmap);
-        System.out.println("JSON output: " + jsonStr);
-        Map<String,String> newHashMap = new HashMap();
-        newHashMap = jsonGson.fromJson(jsonStr, newHashMap.getClass());
-        System.out.println("New Hashmap output: " + newHashMap);
+    private appcontrol appcontroller = new appcontrol();
+    
+    public void init(){
+        appcontroller.mapCommand("JSONCommand", new Handler());
+    }
+    
+    public static void main(String[] args) throws Exception {
+        
+        Controller.getJSON("https://launchlibrary.net/1.4/launch/next/1");
+
     }
 }
 
