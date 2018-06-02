@@ -5,27 +5,29 @@
  */
 package cit360.project;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.HashMap;
 
 
 /**
  *
- * @author reddo
+ * @author Kirk Brown
  */
+
 public class appcontrol {
     
-    public static void main(String[] args) throws Exception {
-        
-        Controller.getJSON("https://launchlibrary.net/1.4/launch/next/1");
+    private HashMap<String,Handler> handlerMap = new HashMap();
 
+    public void handleRequest(String command, String data){
+        Handler aCommandHandler = handlerMap.get(command);
+        if (aCommandHandler != null){
+            aCommandHandler.handleIt(data);
+        } else {
+            OutputView.outputDetail("Oopsy");
+        }
     }
-    public static String getDate( String net ) throws Exception {
-        SimpleDateFormat inputFormat = new SimpleDateFormat("MMMM d, yyyy HH:mm:ss z", Locale.ENGLISH);
-        Date inputDate = inputFormat.parse(net);
-        SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM d, yyyy h:m:s a z");
-        String outputDate = outputFormat.format(inputDate);
-        return outputDate;
+
+    public void mapCommand(String aCommand, Handler acHandler){
+        handlerMap.put(aCommand,acHandler);
     }
+    
 }

@@ -10,14 +10,20 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import cit360.project.JSON;
+
 
 /**
  *
- * @author reddo
+ * @author Kirk Brown
  */
+
 public class Controller {
     
-    public static void jsonParse(String completedJson) throws Exception {
+    public void jsonParse(String completedJson) throws Exception {
 
         // Create a new Gson object to convert our JSON string
         Gson gson = new Gson();
@@ -30,20 +36,21 @@ public class Controller {
         // From the details, get just the date of the launch
         // If you check the Launch class, you'll see this does some parsing to take it from UTC to local time
         String launchDate = launchDetail.getnet();
-        String launchDateFormatted = appcontrol.getDate(launchDate);
+        String launchDateFormatted = getDate(launchDate);
         // Go a couple layers deeper and get the description of the first mission
         String missionDescription = launchDetail.getmissions().get(0).getdescription();
         
         // Output the info we want to give to our user
-        OutputView.outputDetail(" Launch details for the next space launch worldwide: ");
-        OutputView.outputDetail(" Launch Date: ", launchDate);
-        OutputView.outputDetail(" Launch Name: ", launchName);
-        OutputView.outputDetail(" Mission: ", missionDescription);
-        OutputView.outputBlankLine();
-
+        JSON json = new JSON();
+        json.init();
+        json.jsonOutput(" Launch details for the next space launch worldwide: ");
+        json.jsonOutput(" Launch Date: " + launchDate);
+        json.jsonOutput(" Launch Name: " + launchName);
+        json.jsonOutput(" Mission: " + missionDescription);
+        
     }
     
-    public static void getJSON( String sourceURL ) throws Exception {
+    public void getJSON( String sourceURL ) throws Exception {
         try {
             // Define the location from which we will get our JSON file
             URL url = new URL(sourceURL);
@@ -66,7 +73,9 @@ public class Controller {
                 // Convert the buffer to into a string variable - this is our completed JSON file
                 String completedJson = jsonBuffer.toString();
                 //Take our JSON string and run it through the jsonParse function
-                OutputView.outputDetail(" Raw JSON Data: ", completedJson);
+                JSON json = new JSON();
+                json.init();
+                json.jsonOutput(" Raw JSON Data: " + completedJson);
                 jsonParse(completedJson);
             } catch (Exception e) {
                 // If there are any exception, show the stack trace
@@ -82,5 +91,12 @@ public class Controller {
             ex.printStackTrace();
         }
 
+    }
+    public static String getDate( String net ) throws Exception {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MMMM d, yyyy HH:mm:ss z", Locale.ENGLISH);
+        Date inputDate = inputFormat.parse(net);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM d, yyyy h:m:s a z");
+        String outputDate = outputFormat.format(inputDate);
+        return outputDate;
     }
 }

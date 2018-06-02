@@ -5,12 +5,11 @@
  */
 package cit360.project;
 
-import com.google.gson.Gson;
-
 /**
  *
- * @author reddo
+ * @author Kirk Brown
  */
+
 public class OutputView {
     
     public static void outputDetail ( String message, String detail ) {
