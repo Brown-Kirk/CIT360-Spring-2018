@@ -32,15 +32,20 @@ public class sum extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             double a=Double.parseDouble(request.getParameter("number1"));
             double b=Double.parseDouble(request.getParameter("number2"));
-            out.println("The sum of " + a + " and " + b + " is " + (a+b));
+            double sum = a+b;
+            double difference = a-b;
+            double product = a*b;
+            double quotient = a/b;
+            double power = Math.pow(a,b);
+            out.println("The sum of " + a + " and " + b + " is " + sum);
             out.println("<br>");
-            out.println("The difference between " + a + " and " + b + " is " + (a-b));
+            out.println("The difference between " + a + " and " + b + " is " + difference);
             out.println("<br>");
-            out.println("The product of " + a + " and " + b + " is " + (a*b));
+            out.println("The product of " + a + " and " + b + " is " + product);
             out.println("<br>");
-            out.println("The quotient of " + a + " and " + b + " is " + (a/b));
+            out.println("The quotient of " + a + " and " + b + " is " + quotient);
             out.println("<br>");
-            out.println(a + " to the power of " + b + " is " + Math.pow(a,b));
+            out.println(a + " to the power of " + b + " is " + power);
         }
     }
 
