@@ -13,7 +13,7 @@ public class categories {
     
     private int categoryId;
     private String categoryName;
-    public categories(){}
+    
     public categories (String categoryName) {
         this.categoryName = categoryName;
     }
@@ -35,4 +35,3 @@ public class categories {
     }
     
 }
-
