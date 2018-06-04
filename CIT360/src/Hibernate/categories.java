@@ -34,4 +34,9 @@ public class categories {
         this.categoryName = categoryName;
     }
     
+    public categories(){
+    
+        //Nothing
+    }
+    
 }
