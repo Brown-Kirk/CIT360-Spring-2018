@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package cit360.project;
 
 import com.google.gson.Gson;
@@ -13,8 +14,6 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import cit360.project.JSON;
-
 
 /**
  *
