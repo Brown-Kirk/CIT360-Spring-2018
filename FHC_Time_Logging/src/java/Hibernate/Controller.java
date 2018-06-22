@@ -5,6 +5,9 @@
  */
 package Hibernate;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -124,6 +127,21 @@ public class Controller {
         return list;
     }
     
+    public List monthlyFHCQuery() {
+        boolean nameExists = true;
+        java.util.Date date= new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int month = cal.get(Calendar.MONTH) + 1;
+        session = helper.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        Query query = session.createQuery("FROM TimeLog WHERE MONTH(timeLogTimeStamp) = :month ORDER BY timeLogPatronId, timeLogId");
+        query.setParameter("month", month);
+        List<TimeLog> list = query.list();
+        t.commit();
+        session.close();
+        return list;
+    }    
     public static void main(String[] args) {
     }
     

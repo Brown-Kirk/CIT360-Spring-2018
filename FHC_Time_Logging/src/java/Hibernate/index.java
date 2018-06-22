@@ -40,6 +40,9 @@ public class index extends HttpServlet {
                 case "patronTimeReport" :
                     response.sendRedirect("/FHC_Time_Logging/faces/patrontimereport.jsp");
                     break;
+                case "fhcMonthlyReport" :
+                    response.sendRedirect("/FHC_Time_Logging/faces/fhcmonthlyreport.jsp");
+                    break;    
             }
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

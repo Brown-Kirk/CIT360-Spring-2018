@@ -25,6 +25,10 @@
         <servlet-name>patronTimeReport</servlet-name>
         <servlet-class>Hibernate.patronTimeReport</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>fhcMonthlyReport</servlet-name>
+        <servlet-class>Hibernate.fhcMonthlyReport</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -44,6 +48,10 @@
     <servlet-mapping>
         <servlet-name>patronTimeReport</servlet-name>
         <url-pattern>/patronTimeReport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fhcMonthlyReport</servlet-name>
+        <url-pattern>/fhcMonthlyReport</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

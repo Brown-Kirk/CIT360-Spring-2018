@@ -18,6 +18,7 @@
                 
                 <option value="patronTimeEntry">Log Time Entry</option>
                 <option value="patronTimeReport">Patron Time Report</option>
+                <option value="fhcMonthlyReport">FHC Monthly Report</option>
                 <option value="addPatron">Add a Patron</option>
             </select>
             <input type="submit" name="button" value="Submit">
