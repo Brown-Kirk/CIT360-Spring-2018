@@ -34,8 +34,11 @@ public class index extends HttpServlet {
                 case "addPatron" :
                     response.sendRedirect("/FHC_Time_Logging/faces/addpatron.jsp");
                     break;
-                case "getPatrons" :
+                case "patronTimeEntry" :
                     response.sendRedirect("/FHC_Time_Logging/faces/patrontimeentry.jsp");
+                    break;
+                case "patronTimeReport" :
+                    response.sendRedirect("/FHC_Time_Logging/faces/patrontimereport.jsp");
                     break;
             }
             /* TODO output your page here. You may use following sample code. */

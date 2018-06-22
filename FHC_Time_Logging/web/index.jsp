@@ -15,7 +15,9 @@
         <h1>Welcome to the Family History Center</h1>
         <form action ="index" method="get">
             <select name="action">
-                <option value="getPatrons">Log Time Entry</option>
+                
+                <option value="patronTimeEntry">Log Time Entry</option>
+                <option value="patronTimeReport">Patron Time Report</option>
                 <option value="addPatron">Add a Patron</option>
             </select>
             <input type="submit" name="button" value="Submit">

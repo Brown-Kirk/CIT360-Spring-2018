@@ -6,7 +6,6 @@
 package Hibernate;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 
 /**
@@ -16,7 +15,7 @@ import java.util.Date;
 public class TimeLog {
     
     private int timeLogId;
-    private Date timeLogTimeStamp;
+    private Timestamp timeLogTimeStamp;
     private int timeLogActionId;
     private int timeLogPatronId;
 
@@ -24,7 +23,7 @@ public class TimeLog {
         this.timeLogId = timeLogId;
     }
 
-    public void setTimeLogTimeStamp(Date timeLogTimeStamp) {
+    public void setTimeLogTimeStamp(Timestamp timeLogTimeStamp) {
         this.timeLogTimeStamp = timeLogTimeStamp;
     }
 
@@ -40,7 +39,7 @@ public class TimeLog {
         return timeLogId;
     }
 
-    public Date getTimeLogTimeStamp() {
+    public Timestamp getTimeLogTimeStamp() {
         return timeLogTimeStamp;
     }
 

@@ -69,7 +69,7 @@ public class Controller {
         
     }
     
-        public boolean checkFirstLastExists(String firstName, String lastName) {
+    public boolean checkFirstLastExists(String firstName, String lastName) {
         boolean nameExists = true;
         session = helper.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
@@ -88,22 +88,43 @@ public class Controller {
     
     public List<Patron> getPatronList() {
         
-        String firstName = "Kirk";
-        String lastName = "Brown";
         session = helper.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         //Query query = session.createQuery("FROM Patron");
-        Query query = session.createQuery("FROM Patron ORDER BY patronFirstName, patronLastName");
+        Query query = session.createQuery("FROM Patron");
         List<Patron> list = query.list();
         t.commit();
         session.close();
         return list;
     }
     
+    public Patron getPatron(int patronId) {
+        
+        session = helper.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        //Query query = session.createQuery("FROM Patron");
+        Query query = session.createQuery("FROM Patron WHERE patronId = :patronId");
+        query.setParameter("patronId", patronId);
+        List<Patron> list = query.list();
+        Patron patron = list.get(0);
+        t.commit();
+        session.close();
+        return patron;
+    }
+    
+    public List patronTimeReportQuery(int timeLogPatronId) {
+        boolean nameExists = true;
+        session = helper.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        Query query = session.createQuery("FROM TimeLog WHERE timeLogPatronId = :timeLogPatronId");
+        query.setParameter("timeLogPatronId", timeLogPatronId);
+        List<TimeLog> list = query.list();
+        t.commit();
+        session.close();
+        return list;
+    }
+    
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.addNewLogInTime(7,1);
-        System.exit(0);
     }
     
 }
